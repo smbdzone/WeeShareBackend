@@ -1,0 +1,83 @@
+
+@font-face {
+  font-family: 'Zenovak';
+  src: url('../font/OpenType-TT/Zenovak.ttf');
+}
+:root {
+  --blue:#24A3E0;
+}
+html,
+body {
+  font-family: 'Zenovak';
+  background-image: url('../img/background.1476308209d03740.webp');
+  background-size: cover;
+  font-size: 1rem;
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* General Classes */
+.spacer{
+  margin-top: 5rem;
+}
+.btn-login{
+  background-color: var(--blue);
+  color: #fff!important;
+  padding: 4px 30px!important;
+  border-radius: 10px;
+}
+.text-blue{
+  color: var(--blue);
+}
+.custom-form-control{
+  background-color: #fff;
+  border-radius: 10px;
+  border: none;
+  padding: 5px 10px;
+}
+.custom-input-group{
+  margin-top: 2rem;
+}
+.img-5{
+  width: 50px;
+}
+.wappan{
+  display: flex;
+}
+aside{
+  width: 20%;
+  height: 100vh;
+  color: #fff;
+  background-color: #1B363F;
+  /* background-image: url('../img/atom.png'); */
+  box-shadow: 3px 3px #1B363F;
+    padding: 2rem 0rem;
+    text-align: center;
+}
+.location-dashboard{
+  font-size: 1.2rem;
+}
+.ref-number{
+  font-size: 14px;
+  line-height: 2px;
+}
+.logo{
+  width: 100px;
+  margin: 2rem 0px;
+}
+.main-container{
+  background-image: url(../img/dashboard/bg-dot.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 80%;
+}
+nav{
+  color: #fff;
+}
+
+.social-icon{
+  width: 30px;
+}
