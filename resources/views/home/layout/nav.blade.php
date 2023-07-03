@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg  nav-bar">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="assets/img/logo.png" alt="Weeshare" class="logo"></a>
+            <a class="navbar-brand" href="#"><img src="{{ asset('assets/img/logo.png') }}" alt="Weeshare" class="logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -11,7 +11,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 m-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About Weeshare</a>
@@ -32,6 +32,9 @@
 
             <!-- End Center Element -->
             <!-- Right Element -->
+            @auth
+                <a class="btn btn-login" href="{{ url('dashboard') }}">Dashboard</a>
+            @else
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <div class="nav-item dropdown">
@@ -41,25 +44,29 @@
                         </a>
                         <div class="dropdown-menu login-dropdown " aria-labelledby="navbarDropdown">
                             <div class="login-arar">
-                                <p class="text-danger text-center">(Please check your email and verify!)</p>
+                                <div id="errors-list">
+
+                                </div>
+                               
+                                <!-- <p class="text-danger text-center">(Please check your email and verify!)</p> -->
                                 <h3 class="text-blug text-center mt-3">Login to Continue</h3>
-                                <form action="">
+                                <form method="POST" action="{{ route('login') }}"  >
+                                    @csrf
                                     <div class="mb-3">
-                                        <input type="email" class="form-control custom-form-control"
-                                            placeholder="Enter you Email">
+                                        <input type="email" name="email"  class="form-control custom-form-control @error('email') is-invalid @enderror"
+                                            placeholder="Enter you Email"   autocomplete="off">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="password" class="form-control custom-form-control"
-                                            placeholder="Enter you Password">
+                                        <input type="password" name="password"   class="form-control custom-form-control @error('password') is-invalid @enderror"
+                                            placeholder="Enter you Password"  autocomplete="off">
                                     </div>
                                     <div class="d-grid gap-2 custom-input-group">
-                                        <input type="submit" name="login" class="btn btn-login btn-block" value="Login">
-
+                                        <button type="submit" name="login" class="btn btn-login btn-block" > Login</button>
                                     </div>
 
                                 </form>
                                 <div class="text-center mt-3">
-                                    <a href="#" class="nav-link">Forget Password</a>
+                                    <a href="{{ route('password.request') }}" class="nav-link">Forget Password</a>
                                 </div>
 
                                 <div class="boroder-dash"></div>
@@ -85,6 +92,7 @@
                     </div>
                 </div>
             </div>
+            @endauth
             <!-- End Right Element -->
         </div>
     </nav>

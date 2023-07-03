@@ -17,10 +17,10 @@
         <div class="col-md-2">
           <h3 class="footer-h">Quick Links</h3>
           <ul class="footer-unstyle-list">
-            <li><a href="#" class="footer-link">Terms & Conditions</a></li>
-            <li><a href="#" class="footer-link">Privacy Policy</a></li>
-            <li><a href="#" class="footer-link">Cookies Policy</a></li>
-            <li><a href="#" class="footer-link">Disclaimer</a></li>
+            <li><a href="{{ url('term_conduction') }}" class="footer-link">Terms & Conditions</a></li>
+            <li><a href="{{ url('privacy_policy') }}" class="footer-link">Privacy Policy</a></li>
+            <li><a href="{{ url('cookies_policy') }}" class="footer-link">Cookies Policy</a></li>
+            <li><a href="{{ url('disclaimer') }}" class="footer-link">Disclaimer</a></li>
           </ul>
         </div>
 
@@ -83,6 +83,48 @@
   <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 
   <script src="{{ asset('assets/lib/aos/aos.js') }}"></script>
-<script>
-  AOS.init();
+  <script src="{{ asset('assets/js/main.js') }}"></script>
+  <script type="text/javascript">
+ 
+ $(function() {
+       
+     /*------------------------------------------
+     --------------------------------------------
+     Submit Event
+     --------------------------------------------
+     --------------------------------------------*/
+     $(document).on("submit", "#handleAjax", function() {
+         var e = this;
+       
+         $(this).find("[type='submit']").html("Login...");
+       
+         $.ajax({
+             url: $(this).attr('action'),
+             data: $(this).serialize(),
+             type: "POST",
+             dataType: 'json',
+             success: function (data) {
+                console.log(data)
+               $(e).find("[type='submit']").html("Login");
+ 
+               if (data.status) {
+                console.log(data)
+                  window.location = data.redirect;
+               }else{
+                   $("#errors-list").html('')
+                   $.each(data.errors, function (key, val) {           
+                       $("#errors-list").append(
+                        "<p class='text-danger text-center'>"+ val +"</p>"
+                        );
+                   });
+               }
+              
+             }
+         });
+ 
+         return false;
+     });
+ 
+   });
+ 
 </script>

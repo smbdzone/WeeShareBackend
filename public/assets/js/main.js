@@ -15,3 +15,30 @@ document.addEventListener("DOMContentLoaded", function(){
         } 
     });
   });
+
+$(document).ready(function(){
+    $('#industry').change(function(){
+        var val = $(this).val();
+        if(val =='other'){
+            $('#other_industries').show()
+        }
+        else{
+            $('#other_industries').hide()
+            
+        }
+    })
+
+    $('.view-password').click(function(){
+          
+      var passInput=$(".password");
+  
+      if(passInput.attr('type')==='password')
+          {
+          passInput.attr('type','text');
+      }else{
+          passInput.attr('type','password');
+      }
+  })
+
+
+})

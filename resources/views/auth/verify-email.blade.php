@@ -18,6 +18,11 @@
                         <p> A fresh verification link has been sent to your email address </p>
                         <p>Before proceeding, please check your email for a verification link</p>
                         <a href="/" class="btn btn-login"> Go to Home page</a>
+                        
+                        <form class="d-inline" method="POST" action="#">
+                            @csrf
+                            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                        </form>
                     </div>
                 </div>
 
